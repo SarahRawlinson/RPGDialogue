@@ -19,40 +19,51 @@ public class DialogueManager : MonoBehaviour
     }
     public void StartDialogue(Dialogue dialogue)
     {
+        // animator state IsOpen true will show the menue
         animator.SetBool("IsOpen", true);
+        // set name
         nameText.text = dialogue.npcName;
-        //Debug.Log("Start conversation with " + dialogue.npcName);
-
+        // clear queue
         sentences.Clear();
-
+        // each conversation points
         foreach(string sentence in dialogue.sentences)
         {
+            // conversation to queue
             sentences.Enqueue(sentence);
-            //Debug.Log("added to queue " + sentence);
         }
-        DisplayNextSentance();
+        // todo start conversation with choice between conversation and action
+        // todo implement action & consiquence function
+        // start displaying letter by letter the first conversation point
+        DisplayNextSentence();
     }
 
 
-    public void DisplayNextSentance()
+    public void DisplayNextSentence()
     {
+        // end if no sentance queued
         if(sentences.Count == 0)
         {
             EndDialogue();
             return;
         }
-        string sentance = sentences.Dequeue();
+        // take current sentence out of queue
+        string sentence = sentences.Dequeue();
+        // stop any coroutines already running
         StopAllCoroutines();
-        StartCoroutine(TypeSencence(sentance));
-        //dialogueText.text = sentance;
-        //Debug.Log(sentance);
+        // print sentence letter by letter
+        StartCoroutine(TypeSencence(sentence));
+        //dialogueText.text = sentance; // turn back on and cancel coroutine to show normally
+
     }
 
     IEnumerator TypeSencence(string sentence)
     {
+        // clear any privious text
         dialogueText.text = "";
+        // each character in sentence
         foreach (char letter in sentence.ToCharArray())
         {
+            // add letter to diologue text box
             dialogueText.text += letter;
             yield return null;
         }
@@ -60,7 +71,7 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
-        animator.SetBool("IsOpen", false);
-        //Debug.Log("End of conversation.");
+        // animator state IsOpen false will hide the menue
+        animator.SetBool("IsOpen", false);        
     }
 }
