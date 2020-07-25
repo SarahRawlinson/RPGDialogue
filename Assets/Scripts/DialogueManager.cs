@@ -8,13 +8,16 @@ public class DialogueManager : MonoBehaviour
 {
     public Text nameText;
     public Text dialogueText;
+    public GameObject continueButton;
     public Animator animator;
+    public GameObject[] actionsButton;
 
     private Queue<string> sentences;
 
     // Update is called once per frame
     void Start()
     {
+        continueButton.SetActive(false);
         sentences = new Queue<string>();
     }
     public void StartDialogue(Dialogue dialogue)
@@ -30,9 +33,7 @@ public class DialogueManager : MonoBehaviour
         {
             // conversation to queue
             sentences.Enqueue(sentence);
-        }
-        // todo start conversation with choice between conversation and action
-        // todo implement action & consiquence function
+        }        
         // start displaying letter by letter the first conversation point
         DisplayNextSentence();
     }
@@ -43,6 +44,8 @@ public class DialogueManager : MonoBehaviour
         // end if no sentance queued
         if(sentences.Count == 0)
         {
+
+            // todo run action / consiquence
             EndDialogue();
             return;
         }
@@ -53,6 +56,10 @@ public class DialogueManager : MonoBehaviour
         // print sentence letter by letter
         StartCoroutine(TypeSencence(sentence));
         //dialogueText.text = sentance; // turn back on and cancel coroutine to show normally
+        if (sentences.Count > 0)
+        {
+            continueButton.SetActive(true);
+        }
 
     }
 
@@ -71,6 +78,7 @@ public class DialogueManager : MonoBehaviour
 
     private void EndDialogue()
     {
+        continueButton.SetActive(false);
         // animator state IsOpen false will hide the menue
         animator.SetBool("IsOpen", false);        
     }

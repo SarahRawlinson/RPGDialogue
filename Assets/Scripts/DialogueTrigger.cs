@@ -5,10 +5,14 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
+    void Start()
+    {
+
+    }
     public void TriggerDialogue()
     {
         // send diologue from trigger to dialogue manager#
-        // todo implement action consiquence into diologue manager
+        
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
     }
 

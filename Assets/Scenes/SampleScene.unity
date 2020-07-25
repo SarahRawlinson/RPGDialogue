@@ -214,7 +214,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1239, y: -925}
+  m_AnchoredPosition: {x: -1239, y: 885}
   m_SizeDelta: {x: 1040, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &99509429
@@ -343,7 +343,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1243, y: -925}
+  m_AnchoredPosition: {x: 1243, y: 885}
   m_SizeDelta: {x: 1040, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &107860681
@@ -802,7 +802,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 23, y: -925}
+  m_AnchoredPosition: {x: 23, y: 885}
   m_SizeDelta: {x: 1040, y: 110}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1000829076
@@ -1084,6 +1084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 1152365590}
   dialogueText: {fileID: 250711596}
+  continueButton: {fileID: 2053596940}
   animator: {fileID: 2138310166}
 --- !u!4 &1210083450
 Transform:
